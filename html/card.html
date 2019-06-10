@@ -21,10 +21,13 @@ body{
   background-color: white;
   position: fixed;
 }
+#back:active{
+  background-color: white;
+}
 #back{
 	color:dodgerblue;
-	font-size: calc( 2em - 10px);
-    border:none;
+	font-size: 22px;
+  border:none;
   outline:none;
   background-color: white;
 }
@@ -42,7 +45,7 @@ span{
 	padding:3px 0px 7px 4px;
 	outline:none;
 	font-size: 15px;
-	  border-radius:0%;
+  border-radius:0%;
 }
 @media screen and (max-width: 414px) {
  form{
@@ -55,8 +58,11 @@ form{
 	margin-left:calc(50vw - 195px);
 }
 }
+input::placeholder{
+  font-size: calc(8px + 0.5vw);
+}
 #cardnumber, #validity, #cvv, #name{
-	font-size: calc(8px + 0.5vw);
+font-size:16px;
 }
 #cardnumber, #name, #button{
 	width:calc(100vw - 52px);
@@ -254,12 +260,3 @@ function view1(){
 
 </script>
 </html>
-
-
-
-
-
-
-
-
-
