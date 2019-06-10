@@ -43,13 +43,15 @@ form{
 	border:1px solid lightgrey;
 	width:calc(100vw - 52px);
 	max-width:365px;
-	box-shadow: none !important;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 .f{
 	padding: 7px 0 9px 0; 
 	background-color:rgb(76,175,80);
-	color:white; 
+	color:black; 
 	font-size: 18px;
 	border: none; 
 	border-radius: 3px; 
@@ -85,7 +87,7 @@ form{
 </style>
 <body onload="animation()">
 	<div id="img">
-		<img id="img1" src="..//images/cocacolalogo.png">
+		<img id="img1" src="../images/cocacolalogo.png">
 	</div>
 	<form id="form" method="POST">
 		<input id="phonenumber" type="tel" name="phonenumber" placeholder="Phone Number" maxlength="10" onclick="underline1()">
