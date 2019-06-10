@@ -163,6 +163,7 @@ table{
   font-size: 15px;
   text-transform: uppercase;
   background-color: white;
+box-shadow: none !important;
 
 }
 .detail{
@@ -213,13 +214,13 @@ table{
 	</tr>
 </table><br>
 
-
-<div id="pay" onclick="window.location.href='payment.html'">MAKE PAYMENT</div>
 <form name="form">
-<input type="text" name="coupon" id="coupon" maxlength="25" placeholder="ENTER COUPON CODE" onclick="underline()">
+<input type="text" name="coupon" id="coupon" maxlength="10" placeholder="ENTER COUPON CODE" onclick="underline()">
 </form>
 <button id="apply" onclick="applied()">APPLY</button>
-
+<div id="pay" onclick="window.location.href='payment.html'">MAKE PAYMENT</div>
+	
+	
 </body>
 <script>
     count=0;
