@@ -60,8 +60,6 @@ form{
 }
 input::placeholder{
   font-size: calc(8px + 0.5vw);
-  padding:0;
-	color:red;
 }
 #cardnumber, #validity, #cvv, #name{
 font-size:16px;
@@ -85,7 +83,7 @@ font-size:16px;
   height:15px;
 }
 #button{
-	background-color: red;
+	background-color: orange;
 	padding:12px 0 12px 4px;
 	color:white;
 	text-align: center;
@@ -183,7 +181,7 @@ img{
 
 <form>
 
-<input type="text" name="cardnumber" id="cardnumber" onkeyup="addHyphen(this)" maxlength="25" placeholder="CARD NUMBER" onclick="underline1()">
+<input type="number" name="cardnumber" id="cardnumber" onkeyup="addHyphen(this)" maxlength="25" placeholder="CARD NUMBER" onclick="underline1()">
 <br>
 <br>
 <input type="text" name="validity" id="validity" maxlength="7" onkeyup="addslash(this)" placeholder="VALID THROUGH (MM/YY)" onclick="underline2()">
