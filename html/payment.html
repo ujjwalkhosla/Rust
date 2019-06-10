@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content= "width=device-width, user-scalable=no">
+<style>
+
+body{
+    -webkit-touch-callout: none; 
+    -webkit-user-select: none; 
+    -khtml-user-select: none; 
+    -moz-user-select: none;  
+    -ms-user-select: none; 
+	font-family: sans-serif;
+	background-color:#F0F0F0;
+}
+
+#paymentmode{
+	top:0;
+	left:0;
+	width:100vw;
+	border-bottom:1px solid lightgrey;
+	padding:7px 0px 7px 7px;
+	background-color: white;
+  	position: fixed;
+}
+#back{
+	color:dodgerblue;
+	font-size: calc( 2em - 10px);
+	border:none;
+	outline:none;
+	background-color: white;
+	
+}
+span{
+	font-size:18px;
+	text-align: center;
+	margin-left: calc(50vw - 115px);
+}
+label{
+	margin-left:30px;
+}
+.new{
+	padding:10px 10px 5px 10px;
+	color: orange;
+	font-size: 12px;
+	border-bottom: 1px solid lightgrey;
+
+}
+.new1{
+	padding:12px 10px;
+	font-size: 12px;
+	border-bottom: 1px solid lightgrey;
+}
+#all{
+	margin-top:calc(50vw - 100px);
+}
+
+#sign{
+	padding: 0px 2px 0px 2px;
+	border:2px orange solid;
+	font-size: 18px;
+	border-radius: 50%;
+}
+img{
+	float:right;
+	right:0;
+}
+.imageadd{
+	width:17px;
+	height:17px;
+}
+.imagetick{
+	width:15px;
+	height:15px;
+}
+.imagecard{
+	width:30px;
+	height:20px;
+	float:left;
+	left:0;
+	margin-top: -3px;
+}
+
+p{
+	color:slategrey;
+}
+
+.pay{
+	color:white;
+	background-color: #99cc66;
+	padding:7px 0;
+	outline:none;
+	border:none;
+	width:100%;
+	font-size:14px;
+	border-radius: 4px;
+	display:none;
+}
+
+#all{
+	margin-right: 16px;
+}
+@media screen and (min-width: 425px){
+#all{
+	width:400px;
+	margin-left: calc(50vw - 206px);
+}	
+}
+.types{
+
+	background-color: white;
+	margin-top: 10px;
+	width:calc(100vw - 16px);
+	max-width:398px;
+}
+#showcard, #showupi{
+	margin-top:25px;
+}
+#showcash{
+	margin-top:20px;
+}
+
+#cash{
+	color: black;
+	padding:10px 10px 5px 10px;
+}
+
+#green1, #green2, #green3{
+	display:none;
+}
+
+#gpay{
+	border: 1px solid lightgrey;
+}
+
+</style>
+
+<body>
+<div id="paymentmode">
+	<input type="button" value=&#8592 id="back" onclick="window.location.href='cart.html'">
+	<span>PAYMENT MODE</span>
+</div>
+
+
+
+
+
+<div id="all">
+
+<label>UPI/BHIM</label>
+<div class="types">
+<div class="new1" onclick="showupi();showgreen1()">
+	<img src="../images/gpay.png" class="imagecard" id="gpay">
+	<label>ujjwalkhosla27@okhdfcbank
+		<img src="../images/tickgrey.png" class="imagetick" id="grey1">
+		<img src="../images/tickgreen.png" class="imagetick" id="green1">
+	</label>
+<button class="pay" id="showupi">PAY USING UPI</button>
+</div>
+<div class="new"><img src="../images/add.png" class="imageadd"> ADD NEW UPI ID <p>You need to have a registered UPI ID</p></div>
+</div>
+
+<br>
+
+<label>CREDIT/DEBIT CARD</label>
+<div class="types">
+<div class="new1" onclick="showcard();showgreen2()">
+	<img src="../images/visa.png" class="imagecard">
+	<label>5103-XXXX-XXXX-1244
+		<img src="../images/tickgrey.png" class="imagetick" id="grey2">
+		<img src="../images/tickgreen.png" class="imagetick" id="green2">
+	</label>
+<button class="pay" id="showcard">PAY USING CARD</button>
+</div>
+<div class="new" onClick="window.location='card.html'"><img src="../images/add.png" class="imageadd"> ADD NEW CARD <p>Save and pay via cards</p></div> 
+</div>
+
+
+<br>
+
+<label>PAY ON DELIVERY</label>
+<div class="types">
+<div class="new" id="cash" onclick="showcash();showgreen3()">
+	<img src="../images/note.png" class="imagecard">
+	<label>CASH
+		<img src="../images/tickgrey.png" class="imagetick" id="grey3">
+		<img src="../images/tickgreen.png" class="imagetick" id="green3">
+	</label>
+<p>Please keep the exact change handy to help us serve better</p>
+<button class="pay" id="showcash">PAY USING CASH</button>
+</div>
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+</body>
+<script>
+function showcash(){
+	if(document.getElementById("showcash").style.display = "none"){
+		document.getElementById("showcash").style.display = "block";
+		document.getElementById("showcard").style.display = "none";		
+		document.getElementById("showupi").style.display = "none";
+		document.getElementById("cash").style.padding = "10px";		
+
+	}      
+}
+
+function showcard(){
+	if(document.getElementById("showcard").style.display = "none"){
+		document.getElementById("showcard").style.display = "block";
+		document.getElementById("showcash").style.display = "none";		
+		document.getElementById("showupi").style.display = "none";		
+
+	}   
+}
+
+function showupi(){
+	if(document.getElementById("showupi").style.display = "none"){
+		document.getElementById("showupi").style.display = "block";
+		document.getElementById("showcard").style.display = "none";
+		document.getElementById("showcash").style.display = "none";		
+	}     
+}
+
+function showgreen1(){
+		document.getElementById("grey1").style.display = "none";
+		document.getElementById("green1").style.display = "block";
+		document.getElementById("green2").style.display = "none";
+		document.getElementById("green3").style.display = "none";
+		document.getElementById("grey2").style.display = "block";
+		document.getElementById("grey3").style.display = "block";
+}
+function showgreen2(){
+		document.getElementById("grey2").style.display = "none";
+		document.getElementById("green2").style.display = "block";
+		document.getElementById("green1").style.display = "none";
+		document.getElementById("green3").style.display = "none";
+		document.getElementById("grey1").style.display = "block";
+		document.getElementById("grey3").style.display = "block";
+}
+function showgreen3(){
+		document.getElementById("grey3").style.display = "none";
+		document.getElementById("green3").style.display = "block";
+		document.getElementById("green1").style.display = "none";
+		document.getElementById("green2").style.display = "none";
+		document.getElementById("grey1").style.display = "block";
+		document.getElementById("grey2").style.display = "block";
+}
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+

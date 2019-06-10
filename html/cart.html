@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html onclick="goto(event)">
+<meta name="viewport" content= "width=device-width, user-scalable=no">
+<style>
+
+body{
+    -webkit-touch-callout: none; 
+    -webkit-user-select: none; 
+    -khtml-user-select: none; 
+    -moz-user-select: none;  
+    -ms-user-select: none; 
+    font-family: sans-serif;
+}
+
+#cart{
+	top:0;
+  left:0;
+	width:100vw;
+	border-bottom:1px solid lightgrey;
+	padding:7px 0px 7px 7px;
+  background-color: white;
+	position: fixed;
+}
+#back{
+	color:dodgerblue;
+	font-size: calc( 2em - 10px);
+  border:none;
+  outline:none;
+  background-color: white;
+}
+span{
+  font-size:18px;
+  text-align: center;
+  margin-left: calc(50vw - 70px);
+}
+
+
+#button{
+  border:1px solid green;
+  border-radius:5px;
+  float:right;
+  right:0;
+  display: inline-block;
+
+}
+#plus{
+  display: inline-block;
+  border-radius:0 3.5px 3.5px 0;
+  margin-left: -4px;
+}
+#min{
+  display: none;
+  border-radius:3.5px 0 0 3.5px;
+}
+#num{
+  background-color: green;
+  color: white;
+  width:23px;
+  display: none;
+  margin-left: -4px;
+}
+#min, #plus{
+  color: green;
+  width:21px;
+}
+#add{
+  display: inline-block;
+  width:44px;
+  color: green;
+  font-size: 15px;
+  text-align: center;
+
+}
+ #min, #plus, #num{
+  font-size: 18px;
+  text-align: center;
+}
+table{
+  margin-top:calc(50vw - 110px);
+  width:calc(100vw - 18px);
+  	max-width:398px;
+
+}
+@media screen and (max-width:414px){
+  #billdetails,#coupon{
+      margin-left:2px;
+}
+
+} 
+@media screen and (max-width:408px){
+#apply{
+          margin-left:calc(100vw - 86.5px);
+            margin-top:-30px;
+              position: absolute;
+}
+}
+@media screen and (min-width:409px){
+#apply{
+          margin-left:323px;
+            margin-top:-30px;
+              position: absolute;
+}  
+}
+
+@media screen and (min-width:414px){
+  table{
+        margin-left:calc(50vw - 206px);
+  }
+  #billdetails,#coupon{
+      margin-left:calc(50vw - 204px);
+}
+#apply{
+  margin-left:-70px;
+  margin-top:0px;
+}
+} 
+.price{
+  padding-right: 5px;
+  padding-left: 15px;
+  width:45px;
+}
+#product{
+	width:150px;
+	padding-top: 5px;
+}
+
+#pay{
+  left:0;
+	background-color: green;
+	padding:12px 0 12px 4px;
+	color:white;
+	text-align: center;
+	font-size: 14px;
+	bottom:0;
+	position: fixed;
+	width:100%;
+}
+#apply{
+  background-color: green;
+  padding:6px 0 6px 0;
+  color:white;
+  text-align: center;
+  font-size: 14px;
+  width:70px;
+  border-radius: 0 3px 3px 0;
+  border:none;
+  outline:none;
+  display: none;
+}
+#bill{
+	font-size: 14px;
+	margin-top:10px;
+}
+
+#coupon{
+  width:calc(100vw - 24px);
+  max-width:385px;
+  font-size: calc(8px + 0.5vw);
+  border:1px solid lightgrey;
+  border-radius: 3px;
+  padding:5px 0px 5px 4px;
+  outline:none;
+  font-size: 15px;
+  text-transform: uppercase;
+  background-color: white;
+
+}
+.detail{
+    width:45px;
+    padding-right: 10px;
+}
+</style>
+
+
+<body>
+<div id="cart">
+  <input type="button" value=&#8592 id="back" onclick="window.location.href='home.html'">
+  <span>CART</span>
+</div>
+
+<table>
+  <tr>
+    <td id="product">Coke</td>
+    <td id="but">
+        <div id="button">
+            <div id="min" onclick="min()"><b> – </b></div>
+            <div id="num"> 0 </div>
+            <div id="add"><b>ADD</b></div>
+            <div id="plus" onclick="plus()"><b> + </b></div>
+        </div>
+    </td>
+    <td valign="middle" class="price">&#8377;80.80</td>
+</tr>
+</table><br>
+<label id="billdetails">BILL DETAILS</label>
+<table id="bill">
+	<tr>
+		<td>Item Total</td>
+		<td class="detail" align="right">&#8377;10</td>
+	</tr>
+	<tr>
+		<td>Total Discount</td>
+		<td class="detail" align="right">&#8377;100</td>
+	</tr>
+	<tr>
+		<td>Delivery Fee</td>
+		<td class="detail" align="right">&#8377;10000</td>
+	</tr>
+	<tr>
+		<td>To Pay</td>
+		<td class="detail" align="right">&#8377;1000</td>
+	</tr>
+</table><br>
+
+
+<div id="pay" onclick="window.location.href='payment.html'">MAKE PAYMENT</div>
+<form name="form">
+<input type="text" name="coupon" id="coupon" maxlength="25" placeholder="ENTER COUPON CODE" onclick="underline()">
+</form>
+<button id="apply" onclick="applied()">APPLY</button>
+
+</body>
+<script>
+    count=0;
+  function plus(){
+    document.getElementById("add").style.display = "none";
+    document.getElementById("min").style.display = "inline-block";
+    document.getElementById("num").style.display = "inline-block";
+    count+=1;
+    document.getElementById("num").innerHTML= count;
+  }
+
+  function min(){
+    if(count>1){
+    count-=1;
+    document.getElementById("num").innerHTML= count;
+    }
+    else{
+    document.getElementById("add").style.display = "inline-block";
+    document.getElementById("min").style.display = "none";
+    document.getElementById("num").style.display = "none";
+    count=0;
+    }
+  }
+
+
+
+
+count=1;
+    function underline(){
+        document.getElementById("apply").style.display = "inline";
+        
+  if(count==1){
+
+        document.getElementById("coupon").style.borderColor = "green";
+      console.log(99);
+}
+
+        else{
+        document.getElementById("coupon").style.borderColor = "lightgrey";
+        document.getElementById("coupon").style.backgroundColor = "white";
+        document.getElementById("apply").innerHTML = "APPLY";  
+        document.getElementById("apply").style.color = "white";        
+        document.getElementById("coupon").style.color = "BLACK";
+        console.log(50);
+        applied();
+}
+
+    }
+
+
+function applied(){
+    var empt = document.forms["form"]["coupon"].value;
+        if (empt == ""){
+                return false;
+    }
+      else
+      {
+        document.getElementById("apply").style.display = "inline";
+  if(count==1){
+        document.getElementById("coupon").style.borderColor = "green";
+        document.getElementById("coupon").style.backgroundColor = "green";
+
+        document.getElementById("apply").innerHTML = "<img src='../images/applied.png' style='width:18px;height:18px;display:inline;float:left;margin-top:0px;'><label style='display:inline;font-size:11px;'> APPLIED</label>";  
+        document.getElementById("apply").style.color = "white";        
+        document.getElementById("coupon").style.color = "white";
+          console.log(1);
+          count+=1;
+
+
+}
+  else{
+        document.getElementById("coupon").style.borderColor = "green";
+        document.getElementById("coupon").style.backgroundColor = "white";
+
+        document.getElementById("apply").innerHTML = "APPLY";  
+        document.getElementById("apply").style.color = "white";        
+        document.getElementById("coupon").style.color = "black";
+        count-=1;
+
+          console.log(2);
+
+}
+}
+}
+
+
+
+
+      function goto(event) {
+  var noRedirect = '#coupon';
+  var noRedirectt = '#apply';
+  if (!event.target.matches(noRedirect) && !event.target.matches(noRedirectt)) {
+    document.getElementById("coupon").style.borderColor = "lightgrey";
+    document.getElementById("apply").style.display = "none";
+  }
+}
+</script>
+</html>
+
+
+
+
+
+

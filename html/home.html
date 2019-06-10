@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content= "width=device-width, user-scalable=no">
+<style>
+
+body{
+    -webkit-touch-callout: none; 
+    -webkit-user-select: none; 
+    -khtml-user-select: none; 
+    -moz-user-select: none;  
+    -ms-user-select: none; 
+
+}
+
+#footer{
+	display:block;
+	position:absolute;
+	bottom:0;
+	width:100vw;
+	border-top:1px solid lightgrey;
+	left:0;
+	padding: 10px 0 10px 0;
+	position: fixed;
+
+}
+#useron, #useroff, #carton, #cartoff, #orderon, #orderoff{
+	width:30px;
+}
+#useron,#useroff{
+	float:right;
+	margin-right:20px;
+}
+#orderon,#orderoff{
+	float:left;
+	margin-left:10px;
+}
+#carton,#cartoff{
+	margin-left: calc(50vw - 60px);
+}
+#useron,#carton,#orderoff{
+	display:none;
+}
+#on{
+	display:inline;
+}
+
+
+
+.card {
+    width: 150px;
+    border-radius:10px;
+    margin-top: 100px;
+}
+
+#a {
+    border-radius: 10px 10px 0 0;
+    height: 70px;
+    width:100%;
+    border:1px solid grey;
+}
+
+.container {
+    height:45px;
+}
+#price{
+	display: inline-block;
+}
+
+
+#button{
+	border:1px solid green;
+	border-radius:5px;
+	width:65px;
+	float:right;
+	display: inline-block;
+
+}
+#plus{
+	display: inline-block;
+	border-radius:0 3.5px 3.5px 0;
+	margin-left: -4px;
+}
+#min{
+	display: none;
+	border-radius:3.5px 0 0 3.5px;
+}
+#num{
+	background-color: green;
+	color: white;
+	width:23px;
+	display: none;
+	margin-left: -4px;
+}
+#min, #plus{
+	color: green;
+	width:21px;
+}
+#add{
+	display: inline-block;
+	width:44px;
+	color: green;
+	font-size: 15px;
+	text-align: center;
+
+}
+ #min, #plus, #num{
+	font-size: 18px;
+	text-align: center;
+}
+#search{
+display: block;
+	position:absolute;
+	top:0;
+	left:0;
+	width:100vw;
+	background-color: #ccc;
+	height:50px;
+	  	position: fixed;
+}
+
+
+.left{
+    padding: 6px 10px 7px 10px;
+    margin-top:9px; 
+    border-radius: 8px;
+    border:none;
+    outline:none;
+    font-size: 16px;
+}
+@media screen and (max-width: 414px) {
+.left{
+    margin-left:10px; 
+    width:calc(100vw - 40px);
+}
+}
+@media screen and (min-width: 415px) {
+.left{
+    margin-left:calc(50vw - 198px); 
+    width:375px;
+}
+</style>
+
+
+<body>
+
+	<div id="search">
+
+	<input class="left"  type="text" placeholder="Search" >
+	</div>
+
+    <div class="card">
+        <img src="../images/cocacola.png" id="a">
+            <div class="container">
+                <div><b>COKE</b> </div>
+                <div style="padding-top: 5px;">
+                <div id="price">₹40</div>
+                <div id="button">
+                	<div id="min" onclick="min()"><b> – </b></div>
+                	<div id="num"> 0 </div>
+                	<div id="add"><b> ADD </b></div>
+                	<div id="plus" onclick="plus()"><b> + </b></div>
+                </div>
+            </div>
+            </div>
+    </div>
+
+
+<div id="footer">
+
+	<a><img src="../images/orderoff.png" id="orderoff" onclick="hideorder()"></a>
+	<a><img src="../images/orderon.png" id="orderon"></a>
+	<a href='cart.html'><img src="../images/cartoff.png" id="cartoff" onclick="hidecart()"></a>
+	<a><img src="../images/carton.png" id="carton"></a>
+	<a><img src="../images/useroff.png" id="useroff" onclick="hideuser()"></a>
+	<a><img src="../images/useron.png" id="useron"></a>
+</div>
+</body>
+<script>
+	function hideuser(){
+		document.getElementById("useron").style.display = "inline-block";
+		document.getElementById("cartoff").style.display = "inline-block";
+		document.getElementById("orderoff").style.display = "inline-block";
+		document.getElementById("useroff").style.display = "none";
+		document.getElementById("carton").style.display = "none";
+		document.getElementById("orderon").style.display = "none";
+	}
+	function hidecart(){
+		document.getElementById("carton").style.display = "inline-block";
+		document.getElementById("useroff").style.display = "inline-block";
+		document.getElementById("orderoff").style.display = "inline-block";
+		document.getElementById("cartoff").style.display = "none";
+		document.getElementById("useron").style.display = "none";
+		document.getElementById("orderon").style.display = "none";
+	}
+	function hideorder(){
+		document.getElementById("orderon").style.display = "inline-block";
+		document.getElementById("cartoff").style.display = "inline-block";
+		document.getElementById("useroff").style.display = "inline-block";
+		document.getElementById("orderoff").style.display = "none";
+		document.getElementById("carton").style.display = "none";
+		document.getElementById("useron").style.display = "none";
+	}
+
+
+	count=0;
+	function plus(){
+		document.getElementById("add").style.display = "none";
+		document.getElementById("min").style.display = "inline-block";
+		document.getElementById("num").style.display = "inline-block";
+		count+=1;
+		document.getElementById("num").innerHTML= count;
+	}
+
+	function min(){
+		if(count>1){
+		count-=1;
+		document.getElementById("num").innerHTML= count;
+		}
+		else{
+		document.getElementById("add").style.display = "inline-block";
+		document.getElementById("min").style.display = "none";
+		document.getElementById("num").style.display = "none";
+		count=0;
+		}
+	}
+
+
+</script>
+</html>
+

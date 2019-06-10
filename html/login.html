@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, user-scalable=no">
+
+<style>
+
+body{
+    -webkit-touch-callout: none; 
+    -webkit-user-select: none; 
+    -khtml-user-select: none; 
+    -moz-user-select: none;  
+    -ms-user-select: none; 
+    font-family: sans-serif;
+    background-color: rgba(255,0,0,0.1);
+}
+
+form{
+		margin-top: calc(40px + 2vw);
+		visibility: hidden;
+			transition-delay: 0s;
+	transition-duration: 0s;
+	opacity: 0;
+}
+
+@media screen and (max-width: 414px) {
+ form{
+	margin-left:13px;
+}
+}
+
+@media screen and (min-width: 415px) {
+form{
+	margin-left:calc(50vw - 195px);
+}
+}
+
+#phonenumber, #password{
+	padding: 6px 0px 8px 8px ; 
+	border: none; 
+	border-radius: 3px; 
+	outline: none;
+	font-size:14px;
+	border:1px solid lightgrey;
+	width:calc(100vw - 52px);
+	max-width:365px;
+
+}
+
+input.f{
+	padding: 6px 0 9px 0; 
+	background-color:rgb(76,175,80);
+	color:white; 
+	font-size: 15px;
+	border: none; 
+	border-radius: 3px; 
+	outline:none; 
+	width:calc(100vw - 41px);
+	max-width:376px;
+}
+
+#img1{
+		opacity: 0;
+			width:250px;
+}
+#img{
+	text-align: center;
+	margin-top:calc(60vw - 0px);
+	transition-delay: 0s;
+	transition-duration: 0s;
+}
+
+
+#view{
+	margin:-28px;
+}
+#image1, #image2{
+	width:18px;
+}
+
+#image2{
+	display:none;
+}
+</style>
+<body onload="animation()">
+	<div id="img">
+		<img id="img1" src="..//images/cocacolalogo.png">
+	</div>
+	<form id="form" action="home.html" method="POST">
+		<input id="phonenumber" type="tel" name="phonenumber" placeholder="Phone Number" maxlength="10" onclick="underline1()">
+		<br>
+		<br>
+		<input id="password" type="Password" name="Password" placeholder="Password" onclick="underline2()">
+		<span id="view" ><img src="../images/eyeclosed.png" onclick="view1()" id="image1"><img src="../images/eyeopen.png" onclick="view2();" id="image2"> </span>
+		<br>
+		<br>
+		<input class="f" type="submit" name="Login" value="LOGIN">
+	</form>
+</body>
+<script>
+function view1(){
+	document.getElementById("image1").style.display="none";
+	document.getElementById("image2").style.display="inline";
+  	var x = document.getElementById("password");
+  	if (x.type === "password") {
+    x.type = "text";
+  } 
+    setTimeout(function view2(){
+			document.getElementById("image2").style.display="none";
+			document.getElementById("image1").style.display="inline";
+  			var x = document.getElementById("password");
+  			if (x.type === "text") {
+    		x.type = "password";
+  			} }, 500);
+}
+
+
+function animation(){
+		document.getElementById("img1").style.transition = "opacity 1s ease 0s";
+		document.getElementById("img1").style.opacity = "1";
+		document.getElementById("img").style.transition = "margin-top 1s ease 1.5s";
+		document.getElementById("img").style.marginTop = "calc(54vw - 140px)";
+		document.getElementById("form").style.transition = "opacity 2s ease 1.5s";
+		document.getElementById("form").style.opacity = "1";	
+		document.getElementById("form").style.visibility = "visible";
+}
+
+
+    function underline1(){
+    	document.getElementById("phonenumber").style.borderColor = "red";
+      	document.getElementById("password").style.borderColor = "lightgrey";
+
+    }
+    function underline2(){
+      	document.getElementById("phonenumber").style.borderColor = "lightgrey";
+      	document.getElementById("password").style.borderColor = "red";
+
+    }
+</script>
+</html>
