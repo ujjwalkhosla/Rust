@@ -181,7 +181,7 @@ img{
 
 <form>
 
-<input type="number" name="cardnumber" id="cardnumber" onkeyup="addHyphen(this)" maxlength="25" placeholder="CARD NUMBER" onclick="underline1()">
+<input type="text" name="cardnumber" id="cardnumber" onkeyup="addHyphen(this)" maxlength="25" placeholder="CARD NUMBER" onclick="underline1()" pattern="\d*">
 <br>
 <br>
 <input type="text" name="validity" id="validity" maxlength="7" onkeyup="addslash(this)" placeholder="VALID THROUGH (MM/YY)" onclick="underline2()">
