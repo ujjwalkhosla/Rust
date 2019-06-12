@@ -265,14 +265,13 @@ table{
 
 
 
-count=1;
+count1=1;
     function underline(){
         document.getElementById("apply").style.display = "inline";
         
-  if(count==1){
+  if(count1==1){
 
         document.getElementById("coupon").style.borderColor = "green";
-      console.log(99);
 }
 
         else{
@@ -281,7 +280,6 @@ count=1;
         document.getElementById("apply").innerHTML = "APPLY";  
         document.getElementById("apply").style.color = "white";        
         document.getElementById("coupon").style.color = "BLACK";
-        console.log(50);
         applied();
 }
 
@@ -296,17 +294,14 @@ function applied(){
       else
       {
         document.getElementById("apply").style.display = "inline";
-  if(count==1){
+  if(count1==1){
         document.getElementById("coupon").style.borderColor = "green";
         document.getElementById("coupon").style.backgroundColor = "green";
 
         document.getElementById("apply").innerHTML = "<img src='../images/applied.png' style='width:18px;height:18px;display:inline;float:left;margin-top:0px;'><label style='display:inline;font-size:11px;'> APPLIED</label>";  
         document.getElementById("apply").style.color = "white";        
         document.getElementById("coupon").style.color = "white";
-          console.log(1);
-          count+=1;
-
-
+          count1+=1;
 }
   else{
         document.getElementById("coupon").style.borderColor = "green";
@@ -315,10 +310,7 @@ function applied(){
         document.getElementById("apply").innerHTML = "APPLY";  
         document.getElementById("apply").style.color = "white";        
         document.getElementById("coupon").style.color = "black";
-        count-=1;
-
-          console.log(2);
-
+        count1-=1;
 }
 }
 }
